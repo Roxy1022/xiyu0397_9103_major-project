@@ -1,15 +1,15 @@
 let elements = [];
 let scaleFactor = 1;
-let linesColorChanging = false; // 控制线条颜色变化的状态
-let colorChangeFrameInterval = 15; // 控制颜色变化速度的帧数间隔
-let frameCounter = 0; // 计数器
+let linesColorChanging = false; // Controls the state of the line colour change
+let colorChangeFrameInterval = 15; // Frame interval to control the speed of colour change
+let frameCounter = 0; // the counter
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   scaleFactor = min(windowWidth / 600, windowHeight / 700);
   background(22, 21, 39);
 
-  // 初始化所有元素
+  // all elements from group work.
   elements = [
     new Circle(280, 230, 20, color(255, 0, 0, 120)),
     new Circle(310, 230, 15, color(69, 131, 6, 230)),
@@ -232,7 +232,7 @@ class Line {
 function draw() {
   drawElements();
 
-  // 控制颜色变化的频率
+  // Control the frequency of colour changes
   frameCounter++;
   if (frameCounter >= colorChangeFrameInterval) {
     for (let i = 0; i < elements.length; i++) {
@@ -240,12 +240,12 @@ function draw() {
         elements[i].changeColor(color(random(138), random(43), random(180), 150));
       }
     }
-    frameCounter = 0; // 重置计数器
+    frameCounter = 0; // reset the counter
   }
 }
 
 function keyPressed() {
   if (key === ' ') {
-    linesColorChanging = !linesColorChanging; // 使用空格键控制线条颜色变化
+    linesColorChanging = !linesColorChanging; // Use the space bar to control line colour changes
   }
 }
